@@ -12,7 +12,8 @@ class TestLexer(unittest.TestCase):
     def _sample_ws(self, ws_type):
         ws_samples = {
             'valid': "   \t\n",
-            'invalid_int': "   \t"
+            'invalid_int': "   \t",
+            'non_ws': "A   \tB\nC"
         }
         return self._get_lexer(ws_samples[ws_type])
 
@@ -34,6 +35,13 @@ class TestLexer(unittest.TestCase):
 
     def test_get_all_tokens(self):
         lexer = self._sample_ws('valid')
+        lexer.get_all_tokens()
+        t = lexer.tokens
+        assert t[0].get_type() is 'STACK_MANIPULATION' and \
+            t[1].get_type() is 'PUSH' and t[2].get_type() is 'INT'
+
+    def test_get_all_tokens_with_non_ws(self):
+        lexer = self._sample_ws('non_ws')
         lexer.get_all_tokens()
         t = lexer.tokens
         assert t[0].get_type() is 'STACK_MANIPULATION' and \
