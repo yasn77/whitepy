@@ -2,6 +2,10 @@ from .lexerconstants import *
 from .ws_token import Tokeniser
 
 
+class IntError(ValueError):
+    '''Exception when invalid integer is found'''
+
+
 class Lexer(object):
     def __init__(self, line):
         self.line = line
@@ -14,8 +18,7 @@ class Lexer(object):
             const = 'INT'
             token.scan(self.line, self.pos, const)
         else:
-            # TODO: Add error handling for invalid integer
-            pass
+            raise IntError
         return token
 
     def _get_token(self, const):
