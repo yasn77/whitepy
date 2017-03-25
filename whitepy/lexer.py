@@ -8,9 +8,13 @@ class IntError(ValueError):
 
 class Lexer(object):
     def __init__(self, line):
-        self.line = line
+        self.line = self._strip_non_ws(line)
         self.pos = 0
         self.tokens = []
+
+    def _strip_non_ws(self, line):
+        # remove all characters not defined in CHAR_MAP
+        return ''.join([i for i in line if i in CHAR_MAP.values()])
 
     def _get_int(self):
         token = Tokeniser()
