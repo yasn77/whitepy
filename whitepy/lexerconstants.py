@@ -44,3 +44,5 @@ IO_CONST = [
 NUM_CONST = {CHAR_MAP['space']: "0", CHAR_MAP['tab']: "1"}
 
 NUM_SIGN_CONST = {CHAR_MAP['space']: 'POSITIVE', CHAR_MAP['tab']: 'NEGATIVE'}
+
+HAS_ARGS = ['PUSH', 'MARK', 'CALL', 'JUMP', 'JUMP_IF_ZERO', 'JUMP_IF_NEG']
