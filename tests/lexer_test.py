@@ -20,12 +20,7 @@ class TestLexer(unittest.TestCase):
     def test_get_int(self):
         lexer = self._sample_ws('valid')
         r = lexer._get_int()
-        assert r.get_type() == 'INT' and r.get_value() == 'POSITIVE 001'
-
-    @raises(lexer.IntError)
-    def test_invalid_int(self):
-        lexer = self._sample_ws('invalid_int')
-        lexer._get_int()
+        assert r.get_type() == 'INT' and r.get_value() == "   \t"
 
     def test_get_token(self):
         lexer = self._sample_ws('valid')

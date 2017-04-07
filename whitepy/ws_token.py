@@ -29,9 +29,7 @@ class Tokeniser(object):
         scanner = Scanner(patterns)
         found, remainder = scanner.scan(string)
         self.type = 'INT'
-        self.value = "{} {}".format(
-            NUM_SIGN_CONST[found[0][1]],
-            ''.join([NUM_CONST[i] for i in found[1][1]]))
+        self.value = ''.join([found[0][1], found[1][1]])
 
     def _scan_command(self, line, pos, const):
         patterns = [(r"^[{}]".format(i[0]), i[1]) for i in const]
