@@ -34,7 +34,7 @@ class Tokeniser(object):
         self.value = ''.join([found[0][1], found[1][1]])
 
     def _scan_command(self, line, pos, const):
-        patterns = [(r"^[{}]".format(i[0]), i[1]) for i in const]
+        patterns = [(r"^{}".format(i[0]), i[1]) for i in const]
         scanner = Scanner(patterns)
         found, remainder = scanner.scan(line[pos:])
         self.type = found[0]
