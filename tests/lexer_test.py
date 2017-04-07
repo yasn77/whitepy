@@ -32,12 +32,12 @@ class TestLexer(unittest.TestCase):
         lexer = self._sample_ws('valid')
         lexer.get_all_tokens()
         t = lexer.tokens
-        assert t[0].get_type() is 'STACK_MANIPULATION' and \
-            t[1].get_type() is 'PUSH' and t[2].get_type() is 'INT'
+        assert t[0][0].get_type() is 'STACK_MANIPULATION' and \
+            t[0][1].get_type() is 'PUSH' and t[0][2].get_type() is 'INT'
 
     def test_get_all_tokens_with_non_ws(self):
         lexer = self._sample_ws('non_ws')
         lexer.get_all_tokens()
         t = lexer.tokens
-        assert t[0].get_type() is 'STACK_MANIPULATION' and \
-            t[1].get_type() is 'PUSH' and t[2].get_type() is 'INT'
+        assert t[0][0].get_type() is 'STACK_MANIPULATION' and \
+            t[0][1].get_type() is 'PUSH' and t[0][2].get_type() is 'INT'
