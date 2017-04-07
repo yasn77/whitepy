@@ -25,6 +25,8 @@ class Tokeniser(object):
              lambda scanner, token: ("INT_SIGN", token)),
             (r".[{}{}]*".format(CHAR_MAP['space'], CHAR_MAP['tab']),
              lambda scanner, token: ("INT_VAL", token)),
+            (r".{}*".format(CHAR_MAP['lf']),
+             lambda scanner, token: ("LINEFEED", token)),
         ]
         scanner = Scanner(patterns)
         found, remainder = scanner.scan(string)
