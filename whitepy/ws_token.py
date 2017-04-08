@@ -22,19 +22,23 @@ class Tokeniser(object):
         value = dbg(self.value) if self.debug is True else self.value
         return value
 
-    def _scan_int(self, string):
-        patterns = [
-            (r"^[{}{}]".format(CHAR_MAP['space'], CHAR_MAP['tab']),
-             lambda scanner, token: ("INT_SIGN", token)),
-            (r".[{}{}]*".format(CHAR_MAP['space'], CHAR_MAP['tab']),
-             lambda scanner, token: ("INT_VAL", token)),
-            (r".{}*".format(CHAR_MAP['lf']),
-             lambda scanner, token: ("LINEFEED", token)),
-        ]
+    def _scan_int(self, string, const):
+        patterns = []
+        INT_SIGN = (r"^[{}{}]".format(CHAR_MAP['space'], CHAR_MAP['tab']),
+                    lambda scanner, token: ("INT_SIGN", token))
+        INT_VAL = (r".[{}{}]*".format(CHAR_MAP['space'], CHAR_MAP['tab']),
+                   lambda scanner, token: ("INT_VAL", token))
+        if const == 'SIGNED_INT':
+            patterns.append(INT_SIGN)
+        patterns.append(INT_VAL)
         scanner = Scanner(patterns)
         found, remainder = scanner.scan(string)
         self.type = 'INT'
-        self.value = ''.join([found[0][1], found[1][1]])
+        try:
+            self.value = ''.join([f[1] for f in found])
+        except IndexError:
+            print("Hit IndexError, string trying to check is: {}".
+                  format(dbg(string)))
 
     def _scan_command(self, line, pos, const):
         patterns = [(r"^{}".format(i[0]), i[1]) for i in const]
@@ -44,7 +48,7 @@ class Tokeniser(object):
         self.value = [i[0] for i in const if i[1] == self.type][0]
 
     def scan(self, line, pos, const):
-        if const is 'INT':
-            self._scan_int(line[pos:])
+        if const in ['LABEL', 'SIGNED_INT']:
+            self._scan_int(line[pos:], const)
         else:
             self._scan_command(line, pos, const)

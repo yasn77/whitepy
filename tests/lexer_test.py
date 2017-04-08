@@ -19,7 +19,7 @@ class TestLexer(unittest.TestCase):
 
     def test_get_int(self):
         lexer = self._sample_ws('valid')
-        r = lexer._get_int()
+        r = lexer._get_int('PUSH')
         assert r.get_type() == 'INT' and r.get_value() == "   \t"
 
     def test_get_token(self):
