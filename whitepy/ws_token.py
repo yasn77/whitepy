@@ -1,14 +1,16 @@
 from re import Scanner
 from .lexerconstants import CHAR_MAP, NUM_CONST, NUM_SIGN_CONST
+from .debug import Debug as dbg
 
 
 class Tokeniser(object):
-    def __init__(self, type=None, value=None):
+    def __init__(self, type=None, value=None, debug=False):
         self.value = value
         self.type = type
+        self.debug = debug
 
     def __str__(self):
-        return 'Token({}, {})'.format(self.type, self.value)
+        return 'Token({}, {})'.format(self.get_type(), self.get_value())
 
     def __repr__(self):
         return self.__str__()
@@ -17,7 +19,8 @@ class Tokeniser(object):
         return self.type
 
     def get_value(self):
-        return self.value
+        value = dbg(self.value) if self.debug is True else self.value
+        return value
 
     def _scan_int(self, string):
         patterns = [
