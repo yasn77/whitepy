@@ -10,7 +10,7 @@ pp = pprint.PrettyPrinter(width=41, depth=2, compact=True)
 with open('./helloworld.ws', 'r') as f:
     lines = f.read()
 
-item = lexer.Lexer(line=lines)
+item = lexer.Lexer(line=lines, debug=True)
 item.get_all_tokens()
 index = 0
 for i in item.tokens:
