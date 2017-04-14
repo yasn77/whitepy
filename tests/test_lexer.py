@@ -1,4 +1,4 @@
-from nose.tools import *
+from nose2.tools import *
 from whitepy.lexerconstants import *
 import unittest
 import whitepy.lexer as lexer
