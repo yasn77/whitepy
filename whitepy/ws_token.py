@@ -23,6 +23,9 @@ class Tokeniser(object):
         return value
 
     def _scan_int(self, string, const):
+        # TODO: Add better invalid integer handling
+        #       Check for integer sign, possibly treat unsigned integer
+        #       as POSITIVE
         patterns = []
         INT_SIGN = (r"^[{}{}]".format(CHAR_MAP['space'], CHAR_MAP['tab']),
                     lambda scanner, token: ("INT_SIGN", token))
