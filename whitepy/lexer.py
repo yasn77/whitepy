@@ -34,13 +34,11 @@ class Lexer(object):
 
     def get_all_tokens(self):
         while self.pos < len(self.line):
-            print(self.pos)
             req_tokens = 2
             # Get the constant needed to find token
             const = IMP_CONST if len(self.tokens[-1]) == 0 else eval(
                 "{}_CONST".format(self.tokens[-1][0].type))
             token = self._get_token(const)
-            print(token)
             self.pos = self.pos + len(token.value)
             self.tokens[-1].append(token)
             if token.type in HAS_ARGS:
