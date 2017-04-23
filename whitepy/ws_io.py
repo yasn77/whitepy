@@ -21,7 +21,9 @@ class IO(object):
         heap.set()
 
     def o_chr(self):
-        sys.stdout.buffer.write(self.stack.pop().encode('utf-8'))
+        char = chr(self.stack.pop())
+        sys.stdout.buffer.write(char.encode('utf-8'))
 
     def o_int(self):
-        sys.stdout.buffer.write(str(self.stack.pop()).encode('utf-8'))
+        integer = int(chr(self.stack.pop()))
+        sys.stdout.buffer.write(str(integer).encode('utf-8'))
