@@ -19,6 +19,22 @@ class Lexer(object):
         # remove all characters not defined in CHAR_MAP
         return ''.join([i for i in line if i in CHAR_MAP.values()])
 
+    def _get_const(self, token_type):
+        const = None
+        if token_type == 'STACK_MANIPULATION':
+            const = STACK_MANIPULATION_CONST
+        elif token_type == 'ARITHMETIC':
+            const = ARITHMETIC_CONST
+        elif token_type == 'HEAP_ACCESS':
+            const = HEAP_ACCESS_CONST
+        elif token_type == 'FLOW_CONTROL':
+            const = FLOW_CONTROL_CONST
+        elif token_type == 'IO':
+            const = IO_CONST
+        elif token_type == 'NUM':
+            const = NUM_CONST
+        return const
+
     def _get_int(self, t):
         token = Tokeniser(debug=self.debug)
         if t in [a for a in HAS_ARGS if a is not 'PUSH']:
@@ -36,11 +52,8 @@ class Lexer(object):
     def get_all_tokens(self):
         while self.pos < len(self.line):
             req_tokens = 2
-            # Get the constant needed to find token
-            # TODO: Use a method to get constant.. The following code
-            #       requires some magic with eval()
-            const = IMP_CONST if len(self.tokens[-1]) == 0 else eval(
-                "{}_CONST".format(self.tokens[-1][0].type))
+            const = IMP_CONST if len(self.tokens[-1]) == 0 else \
+                self._get_const(self.tokens[-1][0].type)
             token = self._get_token(const)
             self.pos = self.pos + len(token.value)
             self.tokens[-1].append(token)
