@@ -1,10 +1,8 @@
 from functools import partial
-from .lexerconstants import *
+from .lexerconstants import HAS_ARGS, NUM_CONST, NUM_SIGN_CONST
 from .stack import Stack
 from .heap import Heap
 from .ws_io import IO as ws_io
-# from .debug import Debug as dbg
-import pprint
 
 
 class Parser(object):

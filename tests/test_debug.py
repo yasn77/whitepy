@@ -1,5 +1,4 @@
 from nose2.tools import *
-from whitepy.lexerconstants import *
 import unittest
 from whitepy.debug import Debug as debug
 

@@ -1,6 +1,7 @@
-from .lexerconstants import *
+from .lexerconstants import CHAR_MAP, HAS_ARGS, IMP_CONST, \
+    STACK_MANIPULATION_CONST, ARITHMETIC_CONST, HEAP_ACCESS_CONST, \
+    FLOW_CONTROL_CONST, IO_CONST, NUM_CONST
 from .ws_token import Tokeniser
-from .debug import Debug as dbg
 
 
 class IntError(ValueError):

@@ -1,4 +1,4 @@
-from .lexerconstants import *
+from .lexerconstants import CHAR_MAP
 
 
 class Debug(object):
