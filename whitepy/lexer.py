@@ -37,6 +37,8 @@ class Lexer(object):
         while self.pos < len(self.line):
             req_tokens = 2
             # Get the constant needed to find token
+            # TODO: Use a method to get constant.. The following code
+            #       requires some magic with eval()
             const = IMP_CONST if len(self.tokens[-1]) == 0 else eval(
                 "{}_CONST".format(self.tokens[-1][0].type))
             token = self._get_token(const)
