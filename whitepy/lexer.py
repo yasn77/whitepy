@@ -52,4 +52,3 @@ class Lexer(object):
                 self.tokens.append([])
         # Remove empty token list at the end
         del self.tokens[-1]
-
