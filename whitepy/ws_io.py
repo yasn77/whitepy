@@ -25,5 +25,5 @@ class IO(object):
         sys.stdout.buffer.write(char.encode('utf-8'))
 
     def o_int(self):
-        integer = int(chr(self.stack.pop()))
+        integer = self.stack.pop()
         sys.stdout.buffer.write(str(integer).encode('utf-8'))
