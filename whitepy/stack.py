@@ -7,8 +7,8 @@ class StackMath(object):
 
     def _get_operands(self):
         # TODO: Exception handling if value can't be casted to int
-        left = int(self.stack.pop())
         right = int(self.stack.pop())
+        left = int(self.stack.pop())
         return (left, right)
 
     def add(self):

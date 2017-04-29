@@ -39,22 +39,22 @@ class TestStack(unittest.TestCase):
         assert len(stack) is 1 and stack[-1] is 2
 
     def test_subtract(self):
-        stack = Stack([1, 3])
+        stack = Stack([3, 1])
         stack.math.subtract()
         assert len(stack) is 1 and stack[-1] is 2
 
     def test_multiply(self):
-        stack = Stack([2, 3])
+        stack = Stack([3, 2])
         stack.math.multiply()
         assert len(stack) is 1 and stack[-1] is 6
 
     def test_divide(self):
-        stack = Stack([2, 6])
+        stack = Stack([6, 2])
         stack.math.divide()
         assert len(stack) is 1 and stack[-1] is 3
 
     def test_modulo(self):
-        stack = Stack([3, 5])
+        stack = Stack([5, 3])
         stack.math.modulo()
         assert len(stack) is 1 and stack[-1] is 2
 
@@ -67,8 +67,8 @@ class TestStack(unittest.TestCase):
 
     def test_stack_opper_swap_subtract(self):
         stack = Stack()
-        stack.append(10)
         stack.append(5)
+        stack.append(10)
         stack.swap()
         stack.math.subtract()
         assert len(stack) is 1 and stack[-1] is 5
