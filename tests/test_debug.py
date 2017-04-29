@@ -1,4 +1,3 @@
-from nose2.tools import *
 import unittest
 from whitepy.debug import Debug as debug
 

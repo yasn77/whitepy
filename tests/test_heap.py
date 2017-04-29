@@ -1,4 +1,3 @@
-from nose2.tools import *
 import unittest
 from whitepy.stack import Stack
 from whitepy.heap import Heap
