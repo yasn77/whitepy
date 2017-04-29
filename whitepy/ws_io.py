@@ -1,4 +1,3 @@
-import readchar
 import sys
 
 
@@ -7,14 +6,14 @@ class IO(object):
         self.stack = stack
 
     def i_chr(self, heap):
-        self.stack.push(readchar.readchar())
+        self.stack.push(input())
         heap.set()
 
     def i_int(self, heap):
         num = None
         while type(num) is not int:
             try:
-                num = int(readchar.readchar())
+                num = int(input())
             except ValueError:
                 pass
         self.stack.push(num)
