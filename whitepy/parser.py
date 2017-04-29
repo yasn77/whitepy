@@ -26,7 +26,7 @@ class Parser(object):
                 'OUTPUT_CHAR': self.io.o_chr,
                 'OUTPUT_NUM': self.io.o_int,
                 'READ_CHAR': partial(self.io.i_chr, self.heap),
-                'READ_NUM': partial(self.io.i_chr, self.heap)
+                'READ_NUM': partial(self.io.i_int, self.heap)
             },
             'FLOW_CONTROL': {
                 'MARK': (lambda x: None),
