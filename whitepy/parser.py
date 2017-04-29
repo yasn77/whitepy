@@ -83,7 +83,7 @@ class Parser(object):
 
     def jump_neg(self, lbl):
         if self.stack.pop() < 0:
-            self.instruction_ptr == self.labels[lbl]
+            self.instruction_ptr = self.labels[lbl]
         else:
             pass
 
