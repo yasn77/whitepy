@@ -15,6 +15,7 @@ class Parser(object):
         self.labels = self.create_labels()
         self.num_of_tokens = len(tokens)
         self.instruction_ptr = 0
+        self.call_ptr = []
         self.method_map = {
             'STACK_MANIPULATION': {
                 'PUSH': partial(self.stack.push),
@@ -69,7 +70,8 @@ class Parser(object):
         return labels
 
     def call_sub(self, lbl):
-        pass
+        self.call_ptr.append(self.instruction_ptr)
+        self.instruction_ptr = self.labels[lbl]
 
     def jump_loc(self, lbl):
         self.instruction_ptr = self.labels[lbl]
@@ -88,7 +90,7 @@ class Parser(object):
             pass
 
     def end_sub(self):
-        pass
+        self.instruction_ptr = self.call_ptr.pop()
 
     def end(self):
         sys.exit(0)
@@ -99,7 +101,9 @@ class Parser(object):
             if token[1].type in HAS_ARGS:
                 signed = True if token[1] is 'PUSH' else False
                 int_value = self._get_value(token[2].value, signed=signed)
+                # print("Token: {} - Val: {}".format(token[1].type, int_value))
                 self.method_map[token[0].type][token[1].type](int_value)
             else:
+                # print("Token: {}".format(token[1].type))
                 self.method_map[token[0].type][token[1].type]()
             self.instruction_ptr += 1
