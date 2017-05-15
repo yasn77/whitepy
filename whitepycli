@@ -1,0 +1,27 @@
+#!/usr/bin/env python
+
+import whitepy.lexer as lexer
+import whitepy.parser as ws_parser
+import os
+import click
+
+import pprint
+pp = pprint.PrettyPrinter(width=41, depth=2, compact=True)
+
+
+@click.command()
+@click.option('--debug/--no-debug', default=False, help='Enable Debug')
+@click.argument('filename')
+def whitepycli(filename, debug):
+    """Whitespace Interpreter"""
+    assert os.path.isfile(filename)
+    with open(filename, 'r') as f:
+        lines = f.read()
+        item = lexer.Lexer(line=lines, debug=debug)
+        item.get_all_tokens()
+        p = ws_parser.Parser(item.tokens)
+        p.parse()
+
+
+if __name__ == '__main__':
+    whitepycli()
