@@ -1,4 +1,4 @@
-from unittest.mock import patch
+from unittest.mock import patch, call
 import unittest
 from whitepy.ws_io import IO as ws_io
 from whitepy.heap import Heap
@@ -27,3 +27,15 @@ class TestIo(unittest.TestCase):
         self.io.i_int(self.heap)
         self.heap.get()
         assert self.stack.pop() == 1
+
+    def test_o_int(self):
+        self.stack.push('1')
+        with patch('sys.stdout') as fake_stdout:
+            self.io.o_int()
+        (fake_stdout.asset_has_calls[call.buffer.write(b'1')])
+
+    def test_o_chr(self):
+        self.stack.push(65)
+        with patch('sys.stdout') as fake_stdout:
+            self.io.o_chr()
+        (fake_stdout.asset_has_calls[call.buffer.write(b'A')])
