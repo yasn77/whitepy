@@ -5,9 +5,6 @@ import whitepy.parser as ws_parser
 import os
 import click
 
-import pprint
-pp = pprint.PrettyPrinter(width=41, depth=2, compact=True)
-
 
 @click.command()
 @click.option('--debug/--no-debug', default=False, help='Enable Debug')
