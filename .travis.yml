@@ -1,4 +1,7 @@
 language: python
+addons:
+  apt_packages:
+    - pandoc
 python:
   - "2.7"
   - "3.3"

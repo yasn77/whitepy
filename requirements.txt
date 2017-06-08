@@ -3,3 +3,4 @@ readchar==0.7
 coverage==4.3.4
 nose2==0.6.5
 nose2-cov==1.0a4
+pypandoc==1.4
