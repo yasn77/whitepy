@@ -4,7 +4,47 @@
 
 Whitespace interpreter written in Python3 for my final Open University project (TM470)
 
+### Install and Usage
+
+Once installed, run `whitepycli` with a whitespace source file as an argument.
+
+##### Using pip
+
+```shell
+$ pip install whitepy
+$ whitepycli --help
+Usage: whitepycli [OPTIONS] FILENAME
+
+  Whitespace Interpreter
+
+Options:
+  --debug / --no-debug  Enable Debug
+  --help                Show this message and exit.
+  
+$ whitepycli sample_ws/helloworld.ws 
+Hello, World!
+```
+
+##### From Github
+
+```shell
+$ git clone https://github.com/yasn77/whitepy && cd whitepy
+$ pip install -r requirements.txt
+$ ./whitepycli --help
+Usage: whitepycli [OPTIONS] FILENAME
+
+  Whitespace Interpreter
+
+Options:
+  --debug / --no-debug  Enable Debug
+  --help                Show this message and exit.
+  
+$ ./whitepycli sample_ws/helloworld.ws 
+Hello, World!
+```
+
 ### What is Whitespace?
+
 Whitespace programming language was originally created by Edwin Brady and Chris Morris at the University of Durham<sup>[1]</sup>, then gained wider exposure when it was reviewed<sup>[2]</sup> April 1st 2003 on [Slashdot](https://slashdot.org) website.
 
 Originally developed as a bit of fun, Whitespace is an attempt to have a programming language that uses characters that are usually ignored by other programming languages, namely `space` (ASCII 32), `tab`(ASCII 9) and `linefeed`(ASCII 10). The by-product being that you could implement Whitespace code in other text (making it possible to write a polygot computer program).
