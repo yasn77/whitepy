@@ -1,20 +1,23 @@
 from setuptools import setup, find_packages
 
+version = '0.2'
+
 try:
     import pypandoc
-    long_description=pypandoc.convert('README.md', 'rst')
+    long_description = pypandoc.convert('README.md', 'rst')
 except (IOError, ImportError):
     long_description = "Whitespace interpreter written in Python 3"
 
 setup(
     name='whitepy',
-    version='0.0.1',
+    version=version,
     author='Yasser Nabi',
     author_email='yassersaleemi@gmail.com',
     packages=['whitepy'],
     scripts=['whitepycli'],
     package_data={'README.md': ['README.md']},
-    url='http://pypi.python.org/pypi/whitepy/',
+    url='https://github.com/yasn77/whitepy',
+    download_url='https://github.com/yasn77/whitepy/archive/{}.tar.gz'.format(version),
     license='LICENSE.txt',
     description='Whitespace interpreter written in Python 3',
     long_description=long_description,
