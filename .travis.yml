@@ -2,6 +2,9 @@ language: python
 addons:
   apt_packages:
     - pandoc
+env:
+  global:
+    secure: O010c/G1BGpod3pSzMGyHHxrSRsg7++ag8CXY0GuNiZ8RFgEJ0B1Quz+g41UlPemLvNb7yYQ221v6OlM8/k3wsyZW7hCNAMLl3sXxqIZzACfwgh8Y4KTUNNSXD9Ldngo0Mt4IROanjBEndB5KqoHqlzl1Sed5lSyLJQaN/GkE1HPn8GvMzg87wbzVljsvx4pC2IQd9q13f0hu/bxHoL7YGoepTI5Kwu6iJFFcWSbtfTWIoLnzlPMC4HpdfGMuTaZioO1zQ9SvY2Du27eQVaDg15csCE4jeHiydu8ppJdYP/P9i0yJdrS7rVC8Z9c1i/4H/rRCv558m0F16CzBMa1Jg9NKNlOEV/4q5vOjbMdjt2RWSNj7TlyCjxP4y/faJlkRxgdqIBQ3TK00UY6z6eozTWsd8i1tXmmUvYvhUtZFT2BwwrESB0R/YnI7ZIMRFTBKKER/aRXhVNcHZfOcVSql7Re0r38mJN8fU4z7+QCdoRVMHMSxTtXGuW3uET0lhE9c9GyQWzXCWFcI6rEPjxdpoW5/6fSwEwulU3t1u99iyQRpXFiVVTR0SaIbU+Yd7r2gjrh1yTn21wvTYoW/m3pJ0Zq2IGMUd3yR1d/lqVsn6Eb86xtAjOdKLDkWcnOggVU370d8OqJwrySXq+/dvjzO1vRZgiL61b0lBr6ooZBNaw=
 python:
   - "2.7"
   - "3.3"
@@ -11,3 +14,5 @@ matrix:
 install:
   - pip install -r requirements.txt
 script: nose2 --with-coverage --coverage whitepy
+after_sucess:
+  - codeclimate-test-reporter
