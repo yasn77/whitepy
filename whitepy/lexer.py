@@ -37,10 +37,7 @@ class Lexer(object):
 
     def _get_int(self, t):
         token = Tokeniser(debug=self.debug)
-        if t in [a for a in HAS_ARGS if a is not 'PUSH']:
-            const = 'LABEL'
-        elif t == 'PUSH':
-            const = 'SIGNED_INT'
+        const = 'SIGNED_INT' if t == 'PUSH' else 'LABEL'
         token.scan(self.line, self.pos, const)
         return token
 
