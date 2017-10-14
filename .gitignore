@@ -87,3 +87,4 @@ ENV/
 
 .direnv/
 *.swp
+.idea
